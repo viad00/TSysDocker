@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{{ title }} - {{ company_name }}</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'content/bootstrap.min.css' %}" />
+    <script src="{% static 'scripts/modernizr.min.js' %}"></script>
+    <script src="{% static 'scripts/respond.min.js' %}"></script>
+    <script src="{% static 'scripts/jquery.min.js' %}"></script>
+    <script src="{% static 'scripts/popper.min.js' %}"></script>
+    <script src="{% static 'scripts/bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'content/site.css' %}" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="{% url 'home' %}">{{ company_name }}</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'home' %}">Home</a>
+          </li>
+
+        </ul>
+            {% include 'loginpartial.html' %}
+      </div>
+    </nav>
+    <main role="main" class="container body-content body-padding">
+{% block content %}
+{% endblock %}
+        <hr class="col-md-12"/>
+        <footer>
+            <p class="col-md-12">&copy; {% now "Y" %} - {{ company_name }} - <a href="{% url 'home' %}">TestSysDocker Project by Vladislav Utkin</a> </p>
+        </footer>
+    </main>
+{% block scripts %}
+{% endblock %}
+</body>
+</html>

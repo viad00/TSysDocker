@@ -1,0 +1,7 @@
+TSDMaster/TSDMaster/migrations/
+venv/
+TSDMaster/TSDMaster/settings.py
+TSDMaster/db.sqlite
+*.py[cod]
+__pycache__/
+.idea/
