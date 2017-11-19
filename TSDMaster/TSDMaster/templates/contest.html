@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <h1>Contest name: {{ contest.name }}</h1>
+    <hr />
+    <h4>Status:</h4>
+    <table class="table">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>User</th>
+        {% for problem in problems %}
+            <th>{{ problem.name }}</th>
+        {% endfor %}
+        <th>Summary</th>
+    </tr>
+    </thead>
+    </table>
+    <h4>Problem List:</h4>
+    <hr />
+    {% for problem in problems %}
+    <p>{{ problem.problem_id }}: {{ problem.name }}</p>
+    {% endfor %}
+{% endblock %}

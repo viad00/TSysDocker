@@ -1,14 +1,13 @@
 {% load i18n %}
 {% if user.is_authenticated %}
-<form id="logoutForm" action="{%  url 'logout' %}" method="post" class="navbar-right">
+<form id="logoutForm" action="{%  url 'logout' %}" method="post">
     {% csrf_token %}
-    <ul class="nav navbar-nav navbar-right">
-        <li><span class="navbar-brand">{{ user.name }}</span></li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">{% trans "Logout" %}</a></li>
-    </ul>
+    <span class="navbar-brand">{{ user }}</span>
+    {% if user.is_staff %}
+        <a class="btn btn-outline-success my-2 my-sm-2" href="/admin">Admin</a>
+    {% endif %}
+    <a class="btn btn-outline-success my-2 my-sm-0" href="javascript:document.getElementById('logoutForm').submit()">{% trans "Logout" %}</a>
 </form>
 {% else %}
-<ul class="nav navbar-nav navbar-right">
-    <li><a href="{% url 'login' %}">{% trans "Login" %}</a></li>
-</ul>
+    <a class="btn btn-outline-success my-2 my-sm-0" href="{% url 'login' %}">{% trans "Login" %}</a>
 {% endif %}

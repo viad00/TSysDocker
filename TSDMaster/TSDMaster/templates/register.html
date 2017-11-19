@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <h1>Registration</h1>
+    {% if errors %}
+        <div class="validation-summary-errors">{{ errors }}</div>
+    {% endif %}
+    <hr />
+    <form action="{% url 'register' %}" method="post">
+    {% csrf_token %}
+        <div class="form-group">
+            <label for="id_name" class="col-md-2">{{ form.username.label }}</label>
+            <div class="col-md-10">
+                {{ form.username }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="id_name" class="col-md-2">{{ form.password1.label }}</label>
+            <div class="col-md-10">
+                {{ form.password1 }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="id_name" class="col-md-2">{{ form.password2.label }}</label>
+            <div class="col-md-10">
+                {{ form.password2 }}
+            </div>
+        </div>
+    <input type="submit" value="Submit" class="btn" />
+    </form>
+{% endblock %}

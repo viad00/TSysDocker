@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <table class="table">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Problems</th>
+        <th>Date Start</th>
+        <th>Date End</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+{% for contest in contests %}
+    <tr>
+    <th scope="row">{{ contest.id }}</th>
+    <td>{{ contest.name }}</td>
+    <td><a href="{{ contest.problems_file }}">View</a></td>
+    <td>{{ contest.date_start }}</td>
+    <td>{{ contest.date_stop }}</td>
+    <td><a class="btn btn-info" href="{% url 'enter_contest' %}?id={{ contest.id }}">Enter</a></td>
+    </tr>
+{% endfor %}
+    </tbody>
+    </table>
+{% endblock %}

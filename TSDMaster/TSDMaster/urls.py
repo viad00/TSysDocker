@@ -17,11 +17,15 @@ from datetime import datetime
 from django.conf.urls import url, include
 from django.contrib import admin
 import django.contrib.auth.views
+from django.conf import settings
 from TSDMaster import views
 from TSDMaster import forms
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
+    url(r'^all_contests$', views.all_contests, name='all_contests'),
+    url(r'^enter_contest$', views.enter_contest, name='enter_contest'),
+    url(r'^contest$', views.contest, name='contest'),
     url(r'^login/$',
         django.contrib.auth.views.login,
         {
@@ -30,7 +34,7 @@ urlpatterns = [
             'extra_context':
                 {
                     'title': 'Log in',
-                    'year': datetime.now().year,
+                    'company_name': settings.COMPANY_NAME,
                 }
         },
         name='login'),
@@ -40,5 +44,6 @@ urlpatterns = [
             'next_page': '/',
         },
         name='logout'),
+    url(r'^register$', views.register, name='register'),
     url(r'^admin/', admin.site.urls),
 ]

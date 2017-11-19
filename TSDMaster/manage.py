@@ -3,7 +3,7 @@ import os
 import sys
 
 if __name__ == "__main__":
-    if os.path.isfile('settings'):
+    if os.path.isfile('settings.py'):
         os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
     else:
         os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings_example")

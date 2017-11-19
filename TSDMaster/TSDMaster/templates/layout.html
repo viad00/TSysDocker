@@ -23,15 +23,31 @@
         </button>
         <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <!--<li class="nav-item active">
             <a class="nav-link" href="{% url 'home' %}">Home</a>
-          </li>
-
+          </li>-->
+            <li class="nav-item active">
+                <a class="nav-link" href="{ url 'submit' %}">Submit</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{ url 'submissions' %}">Submissions</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'contest' %}">Contest</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'all_contests' %}">All contests</a>
+            </li>
         </ul>
             {% include 'loginpartial.html' %}
       </div>
     </nav>
     <main role="main" class="container body-content body-padding">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{% if message.tags %}{{ message.tags }}{% else %}info{% endif %}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
 {% block content %}
 {% endblock %}
         <hr class="col-md-12"/>
