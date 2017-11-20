@@ -1,4 +1,5 @@
-TSDMaster/TSDMaster/migrations/
+TSDMaster/TSDMaster/migrations/*
+!TSDMaster/TSDMaster/migrations/__init__.py
 venv/
 TSDMaster/TSDMaster/settings.py
 TSDMaster/db.sqlite
